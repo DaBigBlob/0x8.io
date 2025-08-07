@@ -21,4 +21,4 @@ mode = "smart"
 
 [assets]
 directory = "./pub/"
-binding = "PUB"
+not_found_handling = "single-page-application"
