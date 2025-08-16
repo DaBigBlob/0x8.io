@@ -1,6 +1,6 @@
 
 export default {
     async fetch(req, env) {
-        return env.ASSETS.fetch(req);
+        return env.ASSETS.fetch(`${req.url}/index.html`);
     }
 };
