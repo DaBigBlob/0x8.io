@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     long bufsz = bsz -msz +ssz +1;
     char* buf = malloc(sizeof(char) * bufsz);
     if (!buf) return 4;
-    *(buf+bufsz) = '\0';
+    *(buf+bufsz-1) = '\0';
 
     char *med = __strnmtch0(*(argv+1), *(argv+2));
     if (med==*(argv+2)) return 1;
