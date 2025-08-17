@@ -1,12 +1,22 @@
 
-public-dir:
-	mkdir -p ./pub
+com-dir:
+	mkdir -p ./com
 
-index.html: ./src/index.html public-dir
-	minhtml --minify-css --minify-js ./src/index.html -o ./pub/index.html
+esr.exe: ./esr/esr.c com-dir
+	cc ./esr/esr.c -o ./com/esr.exe
 
-deploy: wrangler.toml index.html ./src/main.js
+index.html: ./src/index.html com-dir
+	minhtml --minify-css --minify-js ./src/index.html -o ./com/index.html
+
+main.js: ./src/main.js com-dir esr.exe index.html
+	./com/esr.exe "$$(cat ./src/main.js)" "__HTML__" "\`$$(cat ./com/index.html)\`" > ./com/main.js
+
+deploy: wrangler.toml main.js
 	wrangler deploy
+
+clean: com-dir
+	rm -rf ./com
 
 # alias
 d: deploy
+c: clean

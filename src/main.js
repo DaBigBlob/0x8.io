@@ -1,6 +1,9 @@
-
 export default {
-    async fetch(req, env) {
-        return env.ASSETS.fetch(`${req.url}/index.html`);
-    }
-};
+    async fetch() {
+      return new Response(__HTML__, {
+        headers: { "content-type": "text/html; charset=utf-8" },
+        status: 200
+      });
+    },
+  };
+  

@@ -1,5 +1,5 @@
 name = "blur-flower"
-main = "./src/main.js"
+main = "./com/main.js"
 compatibility_date = "2023-01-01"
 
 routes = [
@@ -11,14 +11,10 @@ workers_dev = false
 preview_urls = false
 
 [observability]
-enabled = false
+enabled = true
 
 [observability.logs]
 invocation_logs = false
 
 [placement]
 mode = "smart"
-
-[assets]
-directory = "./pub/"
-not_found_handling = "single-page-application"
