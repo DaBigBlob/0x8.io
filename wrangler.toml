@@ -1,6 +1,8 @@
 name = "blur-flower"
+
 main = "./com/main.js"
 minify = true
+
 compatibility_date = "2023-01-01"
 
 routes = [
