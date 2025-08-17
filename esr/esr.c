@@ -12,7 +12,7 @@ long __strlen0(char *s) {
 
 char* __strnmtch0(char *s, char *m) {
     char *mm=m;
-    for (;*mm&&*s;s++) if (*mm==*s) mm++; else if (*m==*s) mm=m+1;
+    for (;*mm&&*s;s++) mm=(*mm==*s)?mm+1:((*m==*s)?m+1:m);
     return (*mm=='\0') ? s : m;
 }
 
