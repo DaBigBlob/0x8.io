@@ -3,7 +3,7 @@ com-dir:
 	mkdir -p ./com
 
 esr.exe: ./esr/esr.c com-dir
-	cc ./esr/esr.c -o ./com/esr.exe
+	cc ./esr/esr.c -Wall -Wextra -Werror -pedantic -std=c11 -o ./com/esr.exe
 
 index.html: ./src/index.html com-dir
 	minhtml --minify-css --minify-js ./src/index.html -o ./com/index.html
