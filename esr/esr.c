@@ -25,7 +25,10 @@ int main(int argc, char **argv) {
     long bsz = __strlen0(*(argv+1));
     long msz = __strlen0(*(argv+2));
     long ssz = __strlen0(*(argv+3));
-    char* buf = malloc(sizeof(char) * (bsz -msz +ssz));
+    long bufsz = bsz -msz +ssz +1;
+    char* buf = malloc(sizeof(char) * bufsz);
+    if (!buf) return 4;
+    *(buf+bufsz) = '\0';
 
     char *med = __strnmtch0(*(argv+1), *(argv+2));
     if (med==*(argv+2)) return 1;
