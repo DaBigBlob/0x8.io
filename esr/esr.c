@@ -12,11 +12,8 @@ long __strlen0(char *s) {
 
 char* __strnmtch0(char *s, char *m) {
     char *mm=m;
-    while (*s&&*mm) if (*s==*mm) {
-        mm++;
-        s++;
-    } else mm=m;
-    return s;
+    for (;*mm&&*s;s++) if (*mm==*s) mm++; else if (*m==*s) mm=m+1;
+    return (*mm=='\0') ? s : m;
 }
 
 #include <stdlib.h> // i hate myself
@@ -31,7 +28,7 @@ int main(int argc, char **argv) {
     char* buf = malloc(sizeof(char) * (bsz -msz +ssz));
 
     char *med = __strnmtch0(*(argv+1), *(argv+2));
-    if (*med=='\0') return 1;
+    if (med==*(argv+2)) return 1;
 
     char *
     cur = __strcp0(*(argv+1), buf, (long)(med-*(argv+1)-msz));
